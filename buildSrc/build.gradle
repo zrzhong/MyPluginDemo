@@ -1,0 +1,33 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+
+gradlePlugin {
+    plugins {
+        //插件名
+        buildSrcTestPlugin {
+            //插件id
+            id = 'com.gradle.plugin.testplugin'
+            //插件的具体实现类
+            implementationClass = 'com.gradle.plugin.BuildSrcTestPlugin'
+        }
+    }
+}
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // 因为想使用kotlin，所以这里增加kotlin插件
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.30"
+}

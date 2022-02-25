@@ -1,0 +1,59 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+apply plugin: 'maven-publish'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // 因为想使用kotlin，所以这里增加kotlin插件
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+gradlePlugin {
+    plugins {
+        //插件名
+        buildSrcStandPlugin {
+            //插件id
+            id = 'com.zzr.plugin.stand'
+            //插件的具体实现类
+            implementationClass = 'com.zzr.plugin.StandGradlePlugin'
+        }
+    }
+}
+
+// 组名，可以理解为插件的存放目录
+// com/zzr/gradle/plugins/xxx
+group = 'com.zzr.plugin'
+description = '这是一个独立的插件id'
+version = '1.0.0'
+
+sourceCompatibility = JavaVersion.VERSION_11
+publishing {
+    publications {
+        maven(MavenPublication) {
+            //最终的插件id
+            artifactId = 'com.zzr.gradle.plugin'
+            from components.java
+        }
+    }
+    //插件存储库
+    repositories {
+        maven {
+            // 生成的插件位置
+            url = uri('../repo')
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.30"
+}
