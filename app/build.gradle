@@ -4,7 +4,9 @@ plugins {
     id 'com.gradle.plugin.testplugin'
 //    id 'com.gradle.plugin.stand'
 }
+apply plugin: 'com.github.dcendents.android-maven'
 
+group='com.github.zrzhong'
 android {
     compileSdkVersion 32
     buildToolsVersion "32.0.0"
