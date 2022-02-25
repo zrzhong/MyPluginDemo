@@ -18,6 +18,7 @@ repositories {
     mavenCentral()
 }
 
+//本地依赖插件时使用
 gradlePlugin {
     plugins {
         //插件名

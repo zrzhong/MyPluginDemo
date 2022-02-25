@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.gradle.plugin.testplugin'
-//    id 'com.gradle.plugin.stand' apply false
+//    id 'com.gradle.plugin.stand'
 }
 
 android {
